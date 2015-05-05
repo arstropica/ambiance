@@ -616,6 +616,10 @@ BODY:not(.singular) ARTICLE .entry-meta .meta-items LI
 {
     display: inline;
 }
+BODY:not(.singular) ARTICLE .entry-meta .meta-items LI.comments-link
+{
+    float: right;
+}
 /*Sharing
 ------------------------------------------------------------*/
 .read-n-share
