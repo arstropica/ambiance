@@ -22,7 +22,7 @@ global $post, $theme_namespace;
 $grid_values = at_responsive_get_content_grid_values();
 $grid_classes = at_responsive_get_content_grid_classes();
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("col-md-{$grid_values['featured']} col-xs-{$grid_values['full']} {$grid_classes['featured']}"); ?> role="main">
+<article id="post-<?php the_ID(); ?>" <?php post_class("col-md-{$grid_values['featured']} col-xs-{$grid_values['full']} {$grid_classes['featured']}"); ?> itemtype="http://schema.org/BlogPosting" itemprop="blogPost" role="main">
     <div class="layout-wrapper">
         <div class="content-wrapper">
             <div class="row inner-content-row">
@@ -38,7 +38,7 @@ $grid_classes = at_responsive_get_content_grid_classes();
                     <div class="entry-meta hidden-xs">
                         <?php echo at_responsive_post_entry(); ?>
                     </div>
-                    <div class="entry-content">
+                    <div class="entry-content" itemprop="text">
                         <?php at_responsive_post_excerpt(); ?>
                         <div style="width:100%; height: 0px; clear: both;"></div>
                     </div>

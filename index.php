@@ -33,7 +33,7 @@ $grid_column_count = at_responsive_grid_column_count();
 $grid_values = at_responsive_get_content_grid_values();
 $grid_classes = at_responsive_get_content_grid_classes();
 ?>
-<div class="container main">
+<div class="container main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
     <div class="layout-row row">
         <?php
         if (is_home() || is_front_page()) :
