@@ -68,6 +68,9 @@
     /* Left Sidebar Grid Classes */
     add_filter('at_responsive_content_grid_classes', 'at_responsive_child_grid_classes');
 
+    /* Customizer Grid Column Values */
+    add_filter('at_responsive_content_grid', 'at_responsive_child_theme_filter_grid_customizer');
+
     add_filter('at_responsive_pagination_links', 'at_responsive_child_pagination_links');
 
     // Functions
@@ -134,12 +137,31 @@
     * @return void 
     */
     function at_responsive_child_theme_setup_grid() {
+        global $wp_query;
         // Setup Grid Variables
-        if (is_home() || is_front_page()) {
+        if (is_home() || is_front_page() || $wp_query->is_home) {
+            at_responsive_set_content_grid_values(12, 5, 12, 12, 12, 4, 3, 12, 12, 12, 12, 12);
+        } else if (isset($_REQUEST['guestlogin']) && isset($_REQUEST['redirect'])){
             at_responsive_set_content_grid_values(12, 5, 12, 12, 12, 4, 3, 12, 12, 12, 12, 12);
         } else {
             at_responsive_set_content_grid_values(12, 8, 12, 6, 12, 4, 3, 12, 12, 12, 12, 12);
         }
+    }
+
+    /**
+    * ArsTropica Responsive Child Theme Filter Grid
+    * 
+    * @since 1.0
+    * @return void 
+    */
+    function at_responsive_child_theme_filter_grid_customizer($at_responsive_grid) {
+        global $wp_query, $at_theme_custom;
+
+        if ($at_theme_custom->is_customizer()) {
+            $at_theme_custom->set_option($at_responsive_grid, 'appearance/grid', true);
+        }
+
+        return $at_responsive_grid;
     }
 
     /* Register Theme Sidebars */

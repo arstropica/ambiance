@@ -25,7 +25,7 @@ get_header();
  * Description for global
  * @global object 
  */
-global $wp_query, $post;
+global $wp_query, $post, $theme_namespace;
 ?>
 <?php
 $post_count = 0;
@@ -47,7 +47,7 @@ $grid_classes = at_responsive_get_content_grid_classes();
                 ?>
             </div><!--!widgets-row-->
             <?php if (is_home() || is_front_page()) : ?>
-                <h1 class="hometitle">Recent Posts</h1>
+                <h1 class="hometitle"><?php echo __('Recent Posts', $theme_namespace); ?></h1>
             <?php endif; ?>
             <?php if (have_posts()) : ?>
                 <div class="row content-row eq-parent post-wrapper">
